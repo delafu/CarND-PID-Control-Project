@@ -73,21 +73,21 @@ int main(int argc, char* argv[])
           if (pid.breaking) {
             throttle = -1;
             pid.breaking_count +=1;
-            if (fabs(steer_value) > 0.7) 
-              throttle = 0;
+            if (fabs(steer_value) > 0.8) 
+              throttle = 1;
             if (pid.breaking_count > 15)
               pid.breaking = false;
           } else if ((speed < objective_speed) && ((fabs(pid.d_error) < 0.05) || (fabs(cte) < 0.8))) {
             throttle = 1;
-            if (fabs(steer_value) > 0.7) {
+            if (fabs(steer_value) > 0.6) {
               throttle = 0;
             }        
           } else {
-            if (fabs(steer_value) > 0.7) {
-              throttle = 0;
+            if (fabs(steer_value) > 0.8) {
+              throttle = 1;
               pid.breaking = true;
             } else { 
-              throttle = -1;
+              throttle = 0;
               pid.breaking = true;
             }
             pid.breaking_count += 1;
@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
           }
           
           // DEBUG
-          std::cout << "CTE: " << pid.i_error << " Steering Value: " << steer_value << std::endl;
+          std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
