@@ -13,7 +13,7 @@ Kd or D: It's the parameter that counteract the P parameter to smooth the oscila
 
 Ki or I: It's the integral parameter. I've found this parameter very useful to control the car in the curves and the oscilation in the straights.
 
-[Video of one lap](https://cmake.org/install/)
+[Video of one lap](https://github.com/delafu/CarND-PID-Control-Project/blob/master/movies/PID-project.mp4)
 
 
 ## Dependencies
