@@ -13,6 +13,10 @@ Kd or D: It's the parameter that counteract the P parameter to smooth the oscila
 
 Ki or I: It's the integral parameter. I've found this parameter very useful to control the car in the curves and the oscilation in the straights.
 
+The final parameters are: Kp = 0.1 Kd = 0.00005 Ki = 7
+
+You can execute the PID program: ./pid 0.1 0.00005 7
+
 [Video of one lap](https://github.com/delafu/CarND-PID-Control-Project/blob/master/movies/PID-project.mp4)
 
 
