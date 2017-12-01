@@ -21,8 +21,8 @@ public:
     My coefficients
   */
 
-  double prev_cte;
-  double total_cte;
+  bool breaking;
+  int breaking_count;
 
 
   /*
