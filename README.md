@@ -3,6 +3,23 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflection
+
+I decided to implement the PID controller using manual tuning because I tried to use the twiddle algorithm but I found a lot of problems. I´m not an expert using C++... Then I move the parameters Kp, Kd and Ki to the command line to speed up the finding of good parameters. I used the next algorithm: I fixed the max speed to 20 and I began to use a lot of combinations of possible parameters but I found that I was not able to keep the car in the road even before the first curve. I´ve tried to minimize the oscilation in the straight before the curve using Kp and Kd. Then I began to play with the Ki parameter and I was able to complete one lap at a very slow speed. The first parameter I used were Kp = 0.5 Kd = 0.00035 Ki = 1. Then I increased the speed to 40 and when I ran the simulator the car went out the circuit. Then I tweak the reducing Kp and Ki (I thought more speed more oscilation). I was able to complete a lap with the next parameters Kp = 0.2 Kd = 0.00010 Ki = 5. The next step was to increase the speed to 100. I had again to tweak the parameters but It was not enough, the car went out the circuit in the most of the laps. I thought that I have to use the speed info and I began to make some tests. I decided not to use a new PID for the speed and I made an ad-hoc algorithm to control the speed based in CTE and in the increase of the CTE (Kd). It´s not perfect but i think It´s a good approach to achieve a fast car. I think the effect of the parameters is the following:
+
+Kp or P: I think is the most "reactive" parameter. It's the parameter that steer opposite to the CTE error. If you choose a high value the car is to "reactive" and overshoots.
+
+Kd or D: It's the parameter that counteract the P parameter to smooth the oscilation.
+
+Ki or I: It's the integral parameter. I've found this parameter very useful to control the car in the curves and the oscilation in the straights.
+
+The final parameters are: Kp = 0.1 Kd = 0.00005 Ki = 7
+
+You can execute the PID program: ./pid 0.1 0.00005 7
+
+[Video of one lap](https://github.com/delafu/CarND-PID-Control-Project/blob/master/movies/PID-project.mp4)
+
+
 ## Dependencies
 
 * cmake >= 3.5
